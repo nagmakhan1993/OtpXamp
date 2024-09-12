@@ -1,0 +1,151 @@
+<!-- Index.html -->
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF-8"> 
+	<meta name="viewport"
+		content="width=device-width, 
+				initial-scale=1.0"> 
+	
+	<link rel="stylesheet" href="index_Style.css"> 
+	<title>Addmission Form</title> 
+</head> 
+
+<body> 
+
+	<div class="container"> 
+		<h1>Addmission Form</h1>		
+		
+		<form id="addmissionForm"> 
+
+			<label> Candidate's Name: </label>
+			<input type="text" id="name" name="cName" required><br>
+
+			<label > 
+				Father's Name: 
+			</label>
+			<input type="text"
+				id="fName"
+				name="fName"
+				required><br>
+
+			<label for="mName"> 
+				Mothre's Name: 
+			</label>
+			<input type="text"
+				id="mName"
+				name="mName"
+				required><br> 
+
+			<label for="dob"> 
+				Date of Birth: 
+			</label>
+			<input type="date"
+				id="dob"
+				name="dob"
+min="1999-01-01" max="2024-01-01"
+				required>
+&emsp; 
+
+			<label> 
+				Gender 
+			</label> 
+			<input type="radio"
+				id="male"
+				name="type"
+				value="Male"
+				required> 
+			
+			<label for="male"> 
+				Male 
+			</label> 
+			<input type="radio"
+				id="female"
+				name="type"
+				value="Female"
+				required> 
+			
+		<label for="tgender"> 
+			Female 
+			</label>
+			<input type="radio"
+				id="tgender"
+				name="type"
+				value="Transgender"
+				required> 
+
+			<label for="tgender"> 
+				Transgender 
+			</label><br> 
+
+			<label for="addL1"> 
+				Address in Line 1: 
+			</label><br> 
+			<input type="text"
+				id="addL1"
+				name="addL1"
+				required><br> 
+
+			<label for="addL2"> 
+				Address in Line 2: 
+			</label><br> 
+			<input type="text"
+				id="addL2"
+				name="addL2"
+				required><br> 
+			<label> 
+				District: 
+			</label>
+<input type="text"
+				id="city"
+				name="district"
+				required>
+
+			<label > 
+				City: 
+			</label>
+<input type="text"
+				id="city"
+				name="city"
+				required>
+<label for="state"> 
+				State: 
+			</label><input type="text"
+				id="city"
+				name="state"
+				required>
+
+			<label > 
+				Pincode: 
+			</label>
+<input type="text"
+				id="pincode"
+				name="pincode"
+				required>
+<br>
+<label > 
+				Mobile No.: 
+			</label>
+<input type="text"
+				id="cNum"
+				name="cNum"
+				required> &nbsp;
+				<label > 
+				Email: 
+			</label>
+<input type="text"
+				id="city"
+				name="email"
+				required><br>
+
+			<button type="submit"> 
+				Submit 
+			</button> 
+		</form> 
+	</div> 
+
+	<script src="addmissionForm.js"></script> 
+</body> 
+
+</html>
