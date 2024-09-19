@@ -1,4 +1,4 @@
-package com.RestAPI.JPA.Controller;
+package com.otp.Xamp.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.RestAPI.JPA.Entity.Candidate;
-import com.RestAPI.JPA.Service.candidateService;
+import com.otp.Xamp.Entity.Candidate;
+import com.otp.Xamp.Service.candidateService;
 
 @RestController
 @RequestMapping("/candidate")

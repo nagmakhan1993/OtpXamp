@@ -1,4 +1,4 @@
-package com.RestAPI.JPA.Service;
+package com.otp.Xamp.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,8 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 
-import com.RestAPI.JPA.Entity.Candidate;
-import com.RestAPI.JPA.Repository.candidateRepo;
+import com.otp.Xamp.Entity.Candidate;
+import com.otp.Xamp.Repository.candidateRepo;
 
 public class candidateServiceImpl implements candidateRepo {
 

@@ -1,11 +1,11 @@
-package com.RestAPI.JPA.Service;
+package com.otp.Xamp.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.RestAPI.JPA.Entity.Candidate;
-import com.RestAPI.JPA.Entity.User;
-import com.RestAPI.JPA.Repository.candidateRepo;
+import com.otp.Xamp.Entity.Candidate;
+import com.otp.Xamp.Entity.User;
+import com.otp.Xamp.Repository.candidateRepo;
 
 @Service
 public class candidateService {
