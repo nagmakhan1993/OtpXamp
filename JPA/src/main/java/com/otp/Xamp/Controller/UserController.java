@@ -1,9 +1,10 @@
-package com.RestAPI.JPA.Controller;
+package com.otp.Xamp.Controller;
 
-import com.RestAPI.JPA.Entity.User;
-import com.RestAPI.JPA.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.otp.Xamp.Entity.User;
+import com.otp.Xamp.Service.UserService;
 
 import java.util.List;
 

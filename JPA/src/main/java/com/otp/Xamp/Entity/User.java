@@ -1,4 +1,4 @@
-package com.RestAPI.JPA.Entity;
+package com.otp.Xamp.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
