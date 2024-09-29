@@ -1,5 +1,9 @@
 package com.otp.Xamp.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,10 +12,6 @@ import org.springframework.data.repository.query.FluentQuery;
 
 import com.otp.Xamp.Entity.User;
 import com.otp.Xamp.Repository.UserRepository;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
 public class UserServiceImpl implements UserRepository {
 

@@ -1,11 +1,23 @@
 package com.otp.Xamp.Entity;
 
-import jakarta.persistence.*;
-import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
 @Entity
-@Table(name = "EmpUser")
+@Table(name = "userData")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,6 +34,8 @@ public class User {
     private String userName;
     @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "userType", nullable = false)
+    private String userType;
 	public Integer getUserId() {
 		return userId;
 	}
