@@ -8,12 +8,34 @@
 		content="width=device-width, 
 				initial-scale=1.0"> 
 	
-	<link rel="stylesheet" href="index_Style.css"> 
+	<link rel="stylesheet" href="C:\Users\Dell\Documents\Project\OtpXamp\JPA\src\main\resources\templates\index_Style.css"> 
 	<title>Addmission Form</title> 
 </head> 
 
-<body> 
-
+<body > 
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('Image2.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            color: black; /* Text color */
+        }
+        header, footer {
+            background: rgba(0, 123, 255, 0.7); /* Semi-transparent background */
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Light semi-transparent background */
+            border-radius: 8px;
+        }
+    </style>
 	<div class="container"> 
 		<h1>Addmission Form</h1>		
 		
@@ -108,7 +130,7 @@ min="1999-01-01" max="2024-01-01"
 <input type="text"
 				id="city"
 				name="city"
-				required>
+				required><br>
 <label for="state"> 
 				State: 
 			</label><input type="text"
@@ -145,7 +167,7 @@ min="1999-01-01" max="2024-01-01"
 		</form> 
 	</div> 
 
-	<script src="addmissionForm.js"></script> 
+	<script src="C:\Users\Dell\Documents\Project\OtpXamp\JPA\src\main\resources\templates\addmissionForm.js"></script> 
 </body> 
 
 </html>
