@@ -1,20 +1,23 @@
 package com.otp.Xamp.Controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+
+@Controller
 @RequestMapping("/home") 	
 public class homePage {
 
 	@GetMapping("/")
-	public ModelAndView index () {
-	    ModelAndView modelAndView = new ModelAndView();
-	    modelAndView.setViewName("index");
-	    System.out.println("simple message");
-	    return modelAndView;
+	public String index (Model module) {
+	    // ModelAndView modelAndView = new ModelAndView();
+	    // modelAndView.setViewName("index");
+	    // System.out.println("simple message");
+		module.addAttribute("title", "Test");
+
+	    return "index";
 	}
 
 }
