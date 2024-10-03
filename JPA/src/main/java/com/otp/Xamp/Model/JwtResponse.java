@@ -14,12 +14,8 @@ import lombok.ToString;
 @Builder
 @ToString
 public class JwtResponse {
-	public JwtResponse(String token, String username) {
-
-		this.jwtToken = token;
-		this.username = username;
-	}
 
 	private String jwtToken;
 	private String username;
+
 }

@@ -24,13 +24,13 @@ public class SecurityConfig {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-		http.csrf(csrf -> csrf.disable()).authorizeRequests().requestMatchers("/user/**").authenticated()
+		http.csrf(csrf -> csrf.disable()).authorizeRequests().requestMatchers("/user/**").permitAll()
 				.requestMatchers("/auth/**").permitAll().anyRequest().authenticated().and()
 				.exceptionHandling(ex -> ex.authenticationEntryPoint(point))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
