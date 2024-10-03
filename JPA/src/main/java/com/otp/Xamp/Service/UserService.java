@@ -3,6 +3,7 @@ package com.otp.Xamp.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.otp.Xamp.Entity.User;
@@ -19,6 +20,9 @@ public class UserService {
 	@Autowired
 	private UserModelRepositry userModelRepositry;
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
 	public User addUser(User user) {
 		User data = this.repository.save(user);
 		return data;
@@ -27,11 +31,12 @@ public class UserService {
 	public UserModel createUser(UserModel userModel) {
 
 		UserModel model = new UserModel();
-		model.setUserId(userModel.getUserId());
+		String password = userModel.getPassword();
+
 		model.setUserName(userModel.getUsername());
-		model.setPassword(userModel.getPassword());
-		// userModel.getUserId(), userModel.getUsername(), userModel.getPassword()
-		UserModel save = this.userModelRepositry.save(userModel);
+		model.setPassword(passwordEncoder.encode(password));
+		model.setUserType(userModel.getUserType());
+		this.userModelRepositry.save(model);
 		return model;
 	}
 

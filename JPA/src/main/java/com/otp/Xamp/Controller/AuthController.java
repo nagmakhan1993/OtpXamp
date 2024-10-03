@@ -39,7 +39,7 @@ public class AuthController {
 
 	private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-	@PostMapping("/login")
+	@PostMapping(value = "/login", produces = "application/json")
 	public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
 
 		this.doAuthenticate(request.getEmail(), request.getPassword());
@@ -49,9 +49,14 @@ public class AuthController {
 
 		JwtResponse response = new JwtResponse(token, userDetails.getUsername());
 
-//		response = JwtResponse.builder().jwtToken(token).username(userDetails.getUsername()).build();
+//		JwtResponse response = JwtResponse.builder().jwtToken(token).username(userDetails.getUsername()).build();
 
-		return new ResponseEntity<>(response, HttpStatus.OK);
+		System.out.println();
+		System.out.println("JwtToken: " + token);
+		System.out.println("userName: " + userDetails.getUsername());
+		ResponseEntity<JwtResponse> res = new ResponseEntity(response, HttpStatus.OK);
+
+		return res;
 	}
 
 	private void doAuthenticate(String email, String password) {
