@@ -1,43 +1,34 @@
 package com.otp.Xamp.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.otp.Xamp.Entity.User;
-import com.otp.Xamp.Model.UserModel;
-import com.otp.Xamp.Repository.UserModelRepositry;
-import com.otp.Xamp.Repository.UserRepository;
+import com.otp.Xamp.Repository.UserRepositry;
 
 @Service
 public class UserService {
 
 	@Autowired
-	private UserRepository repository;
-
-	@Autowired
-	private UserModelRepositry userModelRepositry;
+	private UserRepositry repository;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	public User addUser(User user) {
-		User data = this.repository.save(user);
-		return data;
+	public User createUser(User user) {
+		String password = user.getPassword();
+		User userData = new User(user.getUsername(), user.getPassword(), user.getUserType());
+
+		return this.repository.save(userData);
+
 	}
 
-	public UserModel createUser(UserModel userModel) {
-
-		UserModel model = new UserModel();
-		String password = userModel.getPassword();
-
-		model.setUserName(userModel.getUsername());
-		model.setPassword(passwordEncoder.encode(password));
-		model.setUserType(userModel.getUserType());
-		this.userModelRepositry.save(model);
-		return model;
+	public Optional<User> findUserByUserName(String userName) {
+		return repository.findByUserName(userName);
 	}
 
 	public List<User> getAllUser() {
@@ -79,54 +70,5 @@ public class UserService {
 		}
 
 	}
-
-	public List<UserModel> getUserModelList() {
-		return this.userModelRepositry.findAll();
-	}
-
-//	public UserEntity addUser(UserEntity user) {
-//		return this.userRepository.save(user);
-//	}
-//
-//	public UserEntity getUserById(Integer id) {
-//		return this.userRepository.findById(id).orElse(null);
-//	}
-
-//	public String updateUser(Integer id, String firstName, String lastName, String address, String pincode,
-//			String c_number, String ref_number) {
-//		UserEntity userEntity = this.userRepository.findById(id).orElse(null);
-//		if (userEntity != null) {
-//			if (firstName != "") {
-//				userEntity.setFirstName(firstName);
-//			}
-//			if (lastName != "") {
-//				userEntity.setLastName(lastName);
-//			}
-//			if (address != "") {
-//				userEntity.setAddress(address);
-//			}
-//			if (pincode != "") {
-//				userEntity.setPincode(pincode);
-//			}
-//			if (c_number != "") {
-//				userEntity.setC_number(c_number);
-//			}
-//			if (ref_number != "") {
-//				userEntity.setRef_number(ref_number);
-//			}
-//			this.userRepository.save(userEntity);
-//			return "Record update Successfully!!!";
-//		}
-//		return "Record Not Found";
-//	}
-
-//	public String deleteUserById(Integer id) {
-//		UserEntity userEntity = this.userRepository.findById(id).orElse(null);
-//		if (userEntity != null) {
-//			this.userRepository.findById(id);
-//			return "Record Delete Successfully!!";
-//		}
-//		return "Record Not found!!! kindly check ID.";
-//	}
 
 }

@@ -1,93 +1,57 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/index_Style.css}" />
-    <title>Admission Form</title>
-    <style>
+    <title>Welcome Page</title>
+ 
+<style>
         body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            background-image: url('Image2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: black;
+            background-color: #f0f0f0;
         }
-        header, footer {
-            background: rgba(0, 123, 255, 0.7);
-            padding: 10px 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
+        .login-container {
+            background: white;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 10px;
         }
     </style>
 </head>
-
 <body>
-    <!-- <div th:replace="fragments :: header"></div> -->
+    <div class="login-container">
+        <h2>Login</h2>
+ <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+          
+        <button id="submit">Login</button>
+</form>       
 
-    <div class="container">
-        <h1>Admission Form</h1>
-
-        <form id="admissionForm" th:action="@{/submitAdmission}" method="post">
-            <label>Candidate's Name:</label>
-            <input type="text" id="name" name="cName" required><br>
-
-            <label>Father's Name:</label>
-            <input type="text" id="fName" name="fName" required><br>
-
-            <label for="mName">Mother's Name:</label>
-            <input type="text" id="mName" name="mName" required><br>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" min="1999-01-01" max="2024-01-01" required><br>
-
-            <label>Gender:</label>
-            <input type="radio" id="male" name="gender" value="Male" required>
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="gender" value="Female" required>
-            <label for="female">Female</label>
-            <input type="radio" id="transgender" name="gender" value="Transgender" required>
-            <label for="transgender">Transgender</label><br>
-
-            <label for="addL1">Address Line 1:</label><br>
-            <input type="text" id="addL1" name="addL1" required><br>
-
-            <label for="addL2">Address Line 2:</label><br>
-            <input type="text" id="addL2" name="addL2"><br>
-
-            <label>District:</label>
-            <input type="text" id="district" name="district" required><br>
-
-            <label>City:</label>
-            <input type="text" id="city" name="city" required><br>
-
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state" required><br>
-
-            <label>Pincode:</label>
-            <input type="text" id="pincode" name="pincode" required><br>
-
-            <label>Mobile No.:</label>
-            <input type="text" id="cNum" name="cNum" required><br>
-
-            <label>Email:</label>
-            <input type="email" id="email" name="email" required><br>
-
-            <button type="submit">Submit</button>
-        </form>
+ <div class="message" id="message"></div>
     </div>
-
-    <!-- <div th:replace="fragments :: footer"></div> -->
+	<script type="application/javascript" th:src="@{/js/script.js}"></script>
 </body>
-
 </html>

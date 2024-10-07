@@ -72,4 +72,13 @@ public class Candidate {
 	@Column(name = "email", nullable = false)
 	private String email;
 
+	@Column(name = "aadhaarNo", nullable = false)
+	private String aadhaarNo;
+
+	@Column(name = "userName", nullable = false)
+	private String userName;
+
+	@Column(name = "password", nullable = false)
+	private String password;
+
 }
