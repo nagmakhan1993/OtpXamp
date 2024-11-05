@@ -12,10 +12,10 @@ import com.otp.Xamp.Entity.Book;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-	List<Book> findByBookLink(String bookLink);
+	List<Book> findByHref(String href);
 
 	@Query("SELECT b FROM Book b WHERE b.className = :className AND b.subjectName = :subjectName AND b.bookName = :bookName")
-	List<Book> findByClassNameSubjectAndBookName(@Param("className") String className, @Param("subjectName") String subjectName,
-			@Param("bookName") String bookName);
+	List<Book> findByClassNameSubjectAndBookName(@Param("className") String className,
+			@Param("subjectName") String subjectName, @Param("bookName") String bookName);
 
 }

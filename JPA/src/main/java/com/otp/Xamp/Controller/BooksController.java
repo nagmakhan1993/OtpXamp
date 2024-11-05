@@ -33,11 +33,11 @@ public class BooksController {
 		}
 	}
 
-	@GetMapping("/searchBook")
-	public ResponseEntity<String> searchUsers(@RequestParam("className") String className,
+	@GetMapping("/downloadBook")
+	public ResponseEntity<String> downloadBook(@RequestParam("className") String className,
 			@RequestParam("subjectName") String subject, @RequestParam("bookName") String bookName) throws IOException {
 		List<Book> bookDownloadLink = new ArrayList<>();
-		bookDownloadLink = bookservice.bookDownload(className, subject, bookName);
-		return ResponseEntity.ok("Users imported successfully!");
+		bookservice.bookDownload(className, subject, bookName);
+		return ResponseEntity.ok("Book Downloaded Successfully!");
 	}
 }

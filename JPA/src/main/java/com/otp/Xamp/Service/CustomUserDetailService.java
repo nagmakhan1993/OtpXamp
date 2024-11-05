@@ -6,19 +6,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.otp.Xamp.Model.UserModel;
-import com.otp.Xamp.Repository.UserModelRepositry;
+import com.otp.Xamp.Entity.User;
+import com.otp.Xamp.Repository.UserRepositry;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
 	@Autowired
-	private UserModelRepositry userModelRepositry;
+	private UserRepositry userModelRepositry;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		UserModel user = this.userModelRepositry.findByUserName(username)
+		User user = this.userModelRepositry.findByUserName(username)
 				.orElseThrow(() -> new RuntimeException("User Not Found"));
 		return user;
 	}

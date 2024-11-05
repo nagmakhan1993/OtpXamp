@@ -1,6 +1,10 @@
 package com.otp.Xamp.Entity;
 
+import java.util.Collection;
+
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,45 +19,74 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-@Entity
-@Table(name = "userData")
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @ToString
+@Entity
+@Table(name = "UserLogin")
 @DynamicUpdate
 @Data
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
-    private Integer userId;
-    @Column(name = "userName", nullable = false)
-    private String userName;
-    @Column(name = "password", nullable = false)
-    private String password;
-    @Column(name = "userType", nullable = false)
-    private String userType;
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
+public class User implements UserDetails {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "userId")
+	private Integer userId;
+	@Column(name = "userName")
+	private String userName;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "userType", nullable = false)
+	private String userType;
+
+	public User(String userName, String password, String userType) {
 		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
 		this.password = password;
+		this.userType = userType;
 	}
 
-     
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+
+		return this.password;
+	}
+
+	@Override
+	public String getUsername() {
+
+		return this.userName;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+
+		return true;
+	}
+
 }

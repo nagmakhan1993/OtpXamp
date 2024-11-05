@@ -38,61 +38,15 @@ public class Book {
 	@Column(name = "bookName", nullable = false)
 	private String bookName;
 
-	@Column(name = "BookLink", nullable = false)
-	private String bookLink;
-	
-	@Column(name = "OriginLink", nullable = false)
+	@Column(name = "NcertWebLink", nullable = false)
 	private String href;
 
 	@Column(name = "className", nullable = false)
 	private String className;
-	
-	public Integer getbId() {
-		return bId;
-	}
 
-	public void setbId(Integer bId) {
-		this.bId = bId;
-	}
+	@Column(name = "numberOfChapter", nullable = false)
+	private String numberOfChapter;
 
-	public String getSubjectName() {
-		return subjectName;
-	}
-
-	public void setSubjectName(String subjectName) {
-		this.subjectName = subjectName;
-	}
-
-	public String getBookName() {
-		return bookName;
-	}
-
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
-	}
-
-	public String getBookLink() {
-		return bookLink;
-	}
-
-	public void setBookLink(String bookLink) {
-		this.bookLink = bookLink;
-	}
-
-	public String getHref() {
-		return href;
-	}
-
-	public void setHref(String href) {
-		this.href = href;
-	}
-
-	public String getClassName() {
-		return className;
-	}
-
-	public void setClassName(String className) {
-		this.className = className;
-	}
-
+	@Column(name = "BookLink", nullable = false)
+	private String originLink;
 }

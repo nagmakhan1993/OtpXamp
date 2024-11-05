@@ -1,5 +1,6 @@
 package com.otp.Xamp.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,24 @@ public class schoolController {
 
 	@GetMapping("/syncList")
 	public String syncSchoolList() {
-
 		this.service.syncSchool();
-
 		return "succesfuly synced";
-
 	}
 
 	@GetMapping("/list")
 	public List<school> getList() {
 		return this.service.getschoolList();
+	}
 
+	@GetMapping("/downloadSchoolListExcel")
+	public String exportUsersToExcel() {
+		try {
+			this.service.exportSchoolListToExcel();
+			return "User data exported successfully!";
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "Error occurred while exporting data.";
+		}
 	}
 
 }

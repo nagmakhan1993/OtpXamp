@@ -1,8 +1,11 @@
 package com.otp.Xamp.Entity;
 
+import java.util.List;
+
 import org.hibernate.annotations.DynamicUpdate;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +19,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "School")
+@Table(name = "Teacher")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -24,27 +27,17 @@ import lombok.ToString;
 @ToString
 @DynamicUpdate
 @Data
-public class school {
-
+public class Teacher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sId")
-	private Integer sId;
+	@Column(name = "tId")
+	private Integer tId;
 
-	@Column(name = "District", nullable = false)
-	private String district;
+	@Column(name = "tName", nullable = false)
+	private String tName;
 
-	@Column(name = "Zone", nullable = false)
-	private String zone;
-
-	@Column(name = "SchoolID", nullable = false)
+	@Column(name = "schoolID", nullable = false)
 	private String schoolID;
-
-	@Column(name = "UDISE_Code", nullable = false)
-	private String uDISE_Code;
-
-	@Column(name = "Buildingid", nullable = false)
-	private String buildingid;
 
 	@Column(name = "School_Name", nullable = false)
 	private String schoolName;
@@ -52,25 +45,14 @@ public class school {
 	@Column(name = "Address", nullable = false)
 	private String address;
 
-	@Column(name = "Shift", nullable = false)
-	private String shift;
-
-	@Column(name = "SchoolLevel", nullable = false)
-	private String schoolLevel;
-
 	@Column(name = "Gender", nullable = false)
 	private String gender;
 
 	@Column(name = "Phone", nullable = false)
 	private String phone;
 
-	@Column(name = "Hos_Name", nullable = false)
-	private String hosName;
-
-	@Column(name = "Latitude", nullable = false)
-	private String latitude;
-
-	@Column(name = "Longitude", nullable = false)
-	private String longitude;
+	@ElementCollection
+	@Column(name = "subjectList", nullable = false)
+	private List<String> subjectList;
 
 }

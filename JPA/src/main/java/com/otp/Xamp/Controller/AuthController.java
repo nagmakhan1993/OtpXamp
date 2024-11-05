@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.otp.Xamp.Entity.User;
 import com.otp.Xamp.Model.JwtRequest;
 import com.otp.Xamp.Model.JwtResponse;
-import com.otp.Xamp.Model.UserModel;
 import com.otp.Xamp.Security.JwtHelper;
 import com.otp.Xamp.Service.UserService;
 
@@ -72,7 +72,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/create-user")
-	public UserModel createUser(@RequestBody UserModel userModel) {
+	public User createUser(@RequestBody User userModel) {
 		return this.userService.createUser(userModel);
 	}
 

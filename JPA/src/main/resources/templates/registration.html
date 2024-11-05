@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/registration.css">
+	<title>Registration Form</title>
+</head>
+
+<body>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-image: url('/images/Image1.jpg');
+			/* Replace with your image URL */
+			background-size: cover;
+			/* Cover the entire viewport */
+			background-position: center;
+			/* Center the image */
+			background-repeat: no-repeat;
+			/* Do not repeat the image */
+			color: black;
+			/* Text color */
+		}
+
+		header,
+		footer {
+			background: rgba(0, 123, 255, 0.7);
+			/* Semi-transparent background */
+			padding: 10px 20px;
+			text-align: center;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: auto;
+			padding: 20px;
+			background: rgba(255, 255, 255, 0.8);
+			/* Light semi-transparent background */
+			border-radius: 8px;
+		}
+	</style>
+	<div class="container">
+		<h1>Addmission Form</h1>
+
+		<form id="addmissionForm">
+
+			<labe for ="cName"> Candidate's Name: </label>
+			<input type="text" id="cName" name="cName" required><br>
+
+			<label for ="fatherName">
+				Father's Name:
+			</label>
+			<input type="text" id="fatherName" name="fatherName" required><br>
+
+			<label for="motherName">
+				Mother's Name:
+			</label>
+			<input type="text" id="motherName" name="motherName" required><br>
+
+			<label for="dob">
+				Date of Birth:
+			</label>
+			<input type="date" id="dob" name="dob" min="1989-01-01" max="2024-12-01" required>
+			&emsp; &emsp; &emsp;
+
+			<label for ="gender">
+				Gender
+			</label>
+			<input type="radio" id="male" name="gender" value="Male" required>
+
+			<label for="male">
+				Male
+			</label>
+			<input type="radio" id="female" name="gender" value="Female" required>
+
+			<label for="tgender">
+				Female
+			</label>
+			<input type="radio" id="tgender" name="gender" value="Transgender" required>
+
+			<label for="tgender">
+				Transgender
+			</label><br>
+			<label for="aadhaar">Aadhaar Number:</label><br>
+			<input type="number" id="aadhaarNo" name="aadhaarNo" required>
+			<label for="add1">
+				Address in Line 1:
+			</label><br>
+			<input type="text" id="add1" name="add1" required><br>
+
+			<label for="addL2">
+				Address in Line 2:
+			</label><br>
+			<input type="text" id="add2" name="add2"><br>
+			&emsp;<label for="district">
+				District:
+			</label>
+			<input type="text" id="district" name="district" required>
+			&emsp; &emsp;
+			<label for="city">
+				City:
+			</label>
+			<input type="text" id="city" name="city" required><br>
+			&emsp;<label for="state">
+				State:
+			</label><input type="text" id="state" name="state" required>
+			&emsp; &emsp;
+			<label for="pincode">
+				Pincode:
+			</label>
+			<input type="text" id="pincode" name="pincode" required>
+			<br>
+			&emsp;
+			<label for="cNum">
+				Mobile No.:
+			</label>
+			<input type="text" id="cNum" name="cNum" required> &nbsp;&emsp; &emsp;
+			<label for="email">
+				Email:
+			</label>
+			<input type="text" id="email" name="email" required><br>
+
+			<label for="username">
+				UserName:
+			</label>
+			<input type="text" id="userName" name="userName" required><br>
+
+			<label for="password">
+				Password:
+			</label>
+			<input type="text" id="city" name="password" required><br>
+
+			<label for="cpassword">
+				Confirm Password:
+			</label>
+			<input type="text" id="pincode" name="cpassword" required><br>
+
+			<button id="submit"> Submit </button>
+		</form>
+	</div>
+
+	<script src="/js/registration.js"></script>
+	
+</body>
+
+</html>
