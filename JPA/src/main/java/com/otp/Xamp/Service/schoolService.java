@@ -1,7 +1,10 @@
 package com.otp.Xamp.Service;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -55,7 +58,7 @@ public class schoolService {
 			}
 
 			// Write the output to a file
-			try (FileOutputStream fileOut = new FileOutputStream("output.xlsx")) {
+			try (FileOutputStream fileOut = new FileOutputStream("SchoolList.xlsx")) {
 				workbook.write(fileOut);
 			}
 			Sheet new_sheet = workbook.getSheetAt(0);
@@ -71,7 +74,7 @@ public class schoolService {
 				schoolObj.setDistrict(row.getCell(1).getStringCellValue());
 				schoolObj.setZone(row.getCell(2).getStringCellValue());
 				schoolObj.setSchoolID(row.getCell(3).getStringCellValue());
-				schoolObj.setuDISE_Code(row.getCell(4).getStringCellValue());
+				schoolObj.setUDISE_Code(row.getCell(4).getStringCellValue());
 				schoolObj.setBuildingid(row.getCell(5).getStringCellValue());
 				schoolObj.setSchoolName(row.getCell(6).getStringCellValue());
 				schoolObj.setAddress(row.getCell(7).getStringCellValue());
@@ -104,9 +107,74 @@ public class schoolService {
 	}
 
 	public List<school> getschoolList() {
-		// TODO Auto-generated method stub
 		return this.repo.findAll();
-
 	}
 
+	public void exportSchoolListToExcel() throws IOException {
+
+		List<school> schoolList = repo.findAll();
+
+		Workbook workbook = new XSSFWorkbook();
+		Sheet sheet = workbook.createSheet("SchoolList");
+
+		Row headerRow = sheet.createRow(0);
+		headerRow.createCell(0).setCellValue("S.NO");
+		headerRow.createCell(1).setCellValue("District");
+		headerRow.createCell(2).setCellValue("Zone");
+		headerRow.createCell(3).setCellValue("SchoolID");
+		headerRow.createCell(4).setCellValue("UDISE_Code");
+		headerRow.createCell(5).setCellValue("Buildingid");
+		headerRow.createCell(6).setCellValue("School_Name");
+		headerRow.createCell(7).setCellValue("Address");
+		headerRow.createCell(8).setCellValue("Shift");
+		headerRow.createCell(9).setCellValue("SchoolLevel");
+		headerRow.createCell(10).setCellValue("Gender");
+		headerRow.createCell(11).setCellValue("Phone");
+		headerRow.createCell(12).setCellValue("Hos_Name");
+		headerRow.createCell(13).setCellValue("Latitude");
+		headerRow.createCell(14).setCellValue("Longitude");
+		int ountOfColumns = headerRow.getPhysicalNumberOfCells();
+		int rowIndex = 1;
+		int srNo = 0;
+		for (school data : schoolList) {
+			Row row = sheet.createRow(rowIndex++);
+			srNo++;
+			row.createCell(0).setCellValue(srNo);
+			row.createCell(1).setCellValue(data.getDistrict());
+			row.createCell(2).setCellValue(data.getZone());
+			row.createCell(3).setCellValue(data.getSchoolID());
+			row.createCell(4).setCellValue(data.getUDISE_Code());
+			row.createCell(5).setCellValue(data.getBuildingid());
+			row.createCell(6).setCellValue(data.getSchoolName());
+			row.createCell(7).setCellValue(data.getAddress());
+			row.createCell(8).setCellValue(data.getShift());
+			row.createCell(9).setCellValue(data.getSchoolLevel());
+			row.createCell(10).setCellValue(data.getGender());
+			row.createCell(11).setCellValue(data.getPhone());
+			row.createCell(12).setCellValue(data.getHosName());
+			row.createCell(13).setCellValue(data.getLatitude());
+			row.createCell(14).setCellValue(data.getLongitude());
+		}
+		for (int i = 0; i < ountOfColumns; i++) {
+			sheet.autoSizeColumn(i);
+		}
+
+		Path downloadsPath = new File("C:/Users/Dell/Downloads/" + "schoolList.xlsx").toPath();
+
+		File file = downloadsPath.toFile();
+
+		try (FileOutputStream fos = new FileOutputStream(file)) {
+			workbook.write(fos);
+		}
+
+		workbook.close();
+
+		System.out.println("USchool List exported to Excel file at: " + file.getAbsolutePath());
+	}
+
+	public static int getFieldCount(Object obj) {
+		Class<?> objClass = obj.getClass(); // Get the object's class
+		Field[] fields = objClass.getDeclaredFields(); // Get all declared fields
+		return fields.length; // Return the number of fields
+	}
 }

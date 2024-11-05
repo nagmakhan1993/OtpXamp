@@ -20,8 +20,10 @@ public class UserService {
 	private BCryptPasswordEncoder passwordEncoder;
 
 	public User createUser(User user) {
-		String password = user.getPassword();
-		User userData = new User(user.getUsername(), user.getPassword(), user.getUserType());
+
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+
+		User userData = new User(user.getUsername(), encodedPassword, user.getUserType());
 
 		return this.repository.save(userData);
 
