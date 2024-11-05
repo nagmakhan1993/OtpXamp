@@ -15,18 +15,32 @@ public class teacherService {
 	@Autowired
 	private teacherRepo teacherrepo;
 
-	public Teacher addCandidate(Teacher teacher) {
+	public Teacher addTeacher(Teacher teacher) {
 		Teacher data = this.teacherrepo.save(teacher);
 		return data;
 	}
 
-	public Optional<Teacher> getCandidateById(int tId) {
+	public Optional<Teacher> getTeacherById(int tId) {
 		Optional<Teacher> teacher = teacherrepo.findById(tId);
 		return teacher;
 	}
 
-	public List<Teacher> getAllCandidates() {
+	public List<Teacher> getAllTeachers() {
 		return teacherrepo.findAll();
 	}
 
+	public List<Teacher> findAllTeachersBySchoolID(String schoolID) {
+		return teacherrepo.findBySchoolID(schoolID);
+	}
+
+	public Optional<Teacher> updateTeacherByID(Teacher teacherData) {
+		Optional<Teacher> teacher = teacherrepo.findById(teacherData.getTId());
+
+		if (teacher != null) {
+			teacherrepo.updateTeacherDetailsById(teacherData.getTId(), teacherData.getTName(),
+					teacherData.getSchoolID(), teacherData.getSchoolName(), teacherData.getAddress(),
+					teacherData.getGender(), teacherData.getPhone(), teacherData.getSubjectList());
+		}
+		return teacher;
+	}
 }
