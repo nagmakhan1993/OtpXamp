@@ -177,4 +177,8 @@ public class schoolService {
 		Field[] fields = objClass.getDeclaredFields(); // Get all declared fields
 		return fields.length; // Return the number of fields
 	}
+
+	public List<school> getAllSchools() {
+		return repo.findAll();
+	}
 }

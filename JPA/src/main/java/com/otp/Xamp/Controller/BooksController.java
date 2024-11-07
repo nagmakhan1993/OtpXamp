@@ -1,10 +1,15 @@
 package com.otp.Xamp.Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,4 +45,16 @@ public class BooksController {
 		bookservice.bookDownload(className, subject, bookName);
 		return ResponseEntity.ok("Book Downloaded Successfully!");
 	}
+
+	@GetMapping("/process-zip")
+	public ResponseEntity<Resource> processZip() throws IOException {
+
+		String url = "https://ncert.nic.in/textbook/pdf/khsk1dd.zip";
+		File processedZip = bookservice.downloadAndProcessZip(url);
+
+		Resource fileResource = new FileSystemResource(processedZip);
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=processed.zip")
+				.contentType(MediaType.APPLICATION_OCTET_STREAM).body(fileResource);
+	}
+
 }
