@@ -49,4 +49,5 @@ public class Book {
 
 	@Column(name = "BookLink", nullable = false)
 	private String originLink;
+
 }

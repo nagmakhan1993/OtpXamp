@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>School List</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        table, th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>School List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr NO</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+				<th>School Code</th>
+				<th>Zone</th>
+				<th>Shift</th>
+				<th>Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="school : ${schools}">
+                <td th:text="${school.sId}"></td>
+                <td th:text="${school.schoolName}"></td>
+                <td th:text="${school.address}"></td>
+                <td th:text="${school.phone}"></td>
+				 <td th:text="${school.schoolID}"></td>
+                <td th:text="${school.zone}"></td>
+                <td th:text="${school.shift}"></td>
+                <td th:text="${school.schoolLevel}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book List</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        table, th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>Book List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr NO</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Class</th>
+				<th>Number of Chapter</th>
+				<th>Download Link</th>
+				
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.bId}"></td>
+                <td th:text="${book.bookName}"></td>
+                <td th:text="${book.subjectName}"></td>
+                <td th:text="${book.className}"></td>
+				 <td th:text="${book.numberOfChapter}"></td>
+                <td th:text="${book.originLink}"></td>
+               
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

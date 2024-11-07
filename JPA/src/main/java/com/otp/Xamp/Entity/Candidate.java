@@ -81,4 +81,12 @@ public class Candidate {
 	@Column(name = "password", nullable = false)
 	private String password;
 
+	@Column(name = "class", nullable = false)
+	private String className;
+
+	@Column(name = "School")
+	private String schoolCode;
+
+	@Column(name = "Board", nullable = false)
+	private String board;
 }
